@@ -7,7 +7,7 @@ class SnippetAdmin(admin.ModelAdmin):
     search_fields = ['body']
 
 class VoteAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('snippet', 'voted_by')
 
 admin.site.register(Snippet, SnippetAdmin)
 admin.site.register(Vote, VoteAdmin)

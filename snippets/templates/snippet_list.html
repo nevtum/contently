@@ -4,7 +4,7 @@
     <div class="list-content">
         {% for snippet in snippets %}
         <div>
-            <span>{{ snippet.title }}</span>
+            <a href="{% url 'snippet-detail' snippet.id %}">{{ snippet.title }}</a>
             <span>({{ snippet.nr_votes }} votes)</span>
             <a href="">upvote</a>
             <a href="">downvote</a>

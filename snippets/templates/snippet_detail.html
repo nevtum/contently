@@ -1,0 +1,12 @@
+{% extends "base.html "%}
+{% block content %}
+<div class="snippet-detail">
+    <h1>{{ snippet.title }}</h1>
+    <div>
+        <p>{{ snippet.body }}</p>
+        <p>Submitted by: {{ snippet.submitter }}</p>
+        <p>Date submitted: {{ snippet.submitted_date }}</p>        
+        <p>Total votes: {{ snippet.nr_votes }}</p>        
+    </div>
+</div>
+{% endblock %}

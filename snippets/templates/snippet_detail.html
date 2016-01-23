@@ -7,17 +7,7 @@
         <p>Submitted by: {{ snippet.submitter }}</p>
         <p>Date submitted: {{ snippet.submitted_date }}</p>
         <p>Total votes: {{ snippet.nr_votes }}</p>
+        <p>Tags: {{ snippet.tags.all|join:", " }}</p>
     </div>
-    <div class="tags">
-        <h4>Tags:</h4>
-        <ul>  
-        {% for tag in snippet.tags.all %}
-            <li>
-                <p>{{tag}}</p>
-            </li>
-        {% endfor%}
-        </ul>
-    </div>
-    </p>
 </div>
 {% endblock %}

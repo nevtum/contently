@@ -15,6 +15,7 @@ class Snippet(models.Model):
     body = models.TextField()
     
     with_votes = SnippetVoteCountManager()
+    objects = models.Manager()
     tags = TaggableManager(blank=True)
 
     def __str__(self):

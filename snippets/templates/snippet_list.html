@@ -2,16 +2,23 @@
 {% block content %}
 <div class="snippets-page">
     <div class="search-control">
-        <input type="text" value="">
-        <button>Find snippets!</button>
+        <form action="" method="get" class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Find snippets...">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-danger">Search</button>
+            </span>
+        </form>
     </div>
     <div class="list-content">
         {% for snippet in snippets %}
-        <div>
-            <a href="{% url 'snippet-detail' snippet.id %}">{{ snippet.title }}</a>
-            <span>({{ snippet.nr_votes }} votes)</span>
-            <a href="">upvote</a>
-            <a href="">downvote</a>
+        <div class="item">
+            <p><a href="{% url 'snippet-detail' snippet.id %}">{{ snippet.title }}</a></p>
+            <p class="voting">
+                <span>{{ snippet.submitter }}</span>
+                <a href="">upvote</a>
+                <a href="">downvote</a>
+                <span>({{ snippet.nr_votes }} votes)</span>
+            </p>
         </div>
         {% endfor %}
     </div>

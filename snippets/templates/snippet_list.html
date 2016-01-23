@@ -14,7 +14,7 @@
         <div class="item">
             <p><a href="{% url 'snippet-detail' snippet.id %}">{{ snippet.title }}</a></p>
             <p class="voting">
-                <span>{{ snippet.submitter }}</span>
+                <span>posted by {{ snippet.submitter }} {{ snippet.submitted_date|timesince }} ago</span>
                 <a href="">upvote</a>
                 <a href="">downvote</a>
                 <span>({{ snippet.nr_votes }} votes)</span>

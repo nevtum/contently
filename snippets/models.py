@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 class SnippetVoteCountManager(models.Manager):
     def get_queryset(self):
@@ -14,6 +15,7 @@ class Snippet(models.Model):
     body = models.TextField()
     
     with_votes = SnippetVoteCountManager()
+    tags = TaggableManager()
 
     def __str__(self):
         return self.title

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="snippets-page">
+    <div class="search-control">
+        <input type="text" value="">
+        <button>Find snippets!</button>
+    </div>
     <div class="list-content">
         {% for snippet in snippets %}
         <div>

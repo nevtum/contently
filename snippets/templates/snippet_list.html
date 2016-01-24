@@ -2,6 +2,24 @@
 {% block content %}
 <div class="snippets-page container">
     <div class="row">
+        <div class="col-md-5 pull-right">
+            <div class="search-control">
+                <form action="" method="get" class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Find snippets...">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-danger">Search</button>
+                    </span>
+                </form>
+            </div>
+            <div class="links">
+                <p>
+                    <b>
+                        <a href="{% url 'new-snippet' %}">Submit a new snippet</a> | 
+                        <a href="">Another test link</a>
+                    </b>
+                </p>
+            </div>
+        </div>
         <div class="col-md-7">
             <div class="list-content">
                 {% for snippet in snippets %}
@@ -26,24 +44,6 @@
                 {% if page_obj.has_next %}
                     <a href="?page={{ page_obj.next_page_number }}">next</a>
                 {% endif %}
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="search-control">
-                <form action="" method="get" class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Find snippets...">
-                    <span class="input-group-btn">
-                        <button type="submit" class="btn btn-danger">Search</button>
-                    </span>
-                </form>
-            </div>
-            <div class="links">
-                <p>
-                    <b>
-                        <a href="{% url 'new-snippet' %}">Submit a new snippet</a> | 
-                        <a href="">Another test link</a>
-                    </b>
-                </p>
             </div>
         </div>
     </div>

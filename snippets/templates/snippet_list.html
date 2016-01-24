@@ -1,47 +1,51 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="snippets-page">
-    <div class="links">
-        <p>
-            <b>
-                <a href="{% url 'new-snippet' %}">Submit a new snippet</a> | 
-                <a href="">Another test link</a>
-            </b>
-        </p>
-    </div>
-    <div class="search-control">
-        <form action="" method="get" class="input-group">
-            <input type="text" name="search" class="form-control" placeholder="Find snippets...">
-            <span class="input-group-btn">
-                <button type="submit" class="btn btn-danger">Search</button>
-            </span>
-        </form>
-    </div>
-    <div class="list-content">
-        {% for snippet in snippets %}
-        <div class="item">
-            <p><a href="{% url 'snippet-detail' snippet.id %}">{{ snippet.title }}</a></p>
-            <p>posted by {{ snippet.submitter }} {{ snippet.submitted_date|timesince }} ago</p>
-            <p class="voting">
-                <a href="">upvote</a>
-                <a href="">downvote</a>
-                <span>({{ snippet.nr_votes }} votes)</span>
-            </p>
+<div class="snippets-page container">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="list-content">
+                {% for snippet in snippets %}
+                <div class="item">
+                    <p><a href="{% url 'snippet-detail' snippet.id %}">{{ snippet.title }}</a></p>
+                    <p>posted by {{ snippet.submitter }} {{ snippet.submitted_date|timesince }} ago</p>
+                    <p class="voting">
+                        <a href="">upvote</a>
+                        <a href="">downvote</a>
+                        <span>({{ snippet.nr_votes }} votes)</span>
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </div>
         </div>
-        {% endfor %}
-    </div>
-    <div class="pagination">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
-
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-        {% endif %}
+        <div class="col-md-5">
+            <div class="search-control">
+                <form action="" method="get" class="input-group">
+                    <input type="text" name="search" class="form-control" placeholder="Find snippets...">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-danger">Search</button>
+                    </span>
+                </form>
+            </div>
+            <div class="links">
+                <p>
+                    <b>
+                        <a href="{% url 'new-snippet' %}">Submit a new snippet</a> | 
+                        <a href="">Another test link</a>
+                    </b>
+                </p>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,14 +1,24 @@
 {% extends "base.html "%}
 {% block content %}
 {% load markdown_deux_tags %}
-<div class="snippet-detail">
-    <h1>{{ snippet.title }}</h1>
-    <div>
-        <p>{{ snippet.body|markdown }}</p>
-        <p>Submitted by: {{ snippet.submitter }}</p>
-        <p>Date submitted: {{ snippet.submitted_date }}</p>
-        <p>Total votes: {{ snippet.nr_votes }}</p>
-        <p>Tags: {{ snippet.tags.all|join:", " }}</p>
+<div class="detail-page">
+    <div class="links">
+        <p>
+            <b>
+                <a href="{% url 'new-snippet' %}">Submit a new snippet</a> |
+                <a href="{% url 'snippets' %}">Back to snippets</a>
+            </b>
+        </p>
+    </div>
+    <div class="snippet-detail">
+        <h1>{{ snippet.title }}</h1>
+        <div>
+            <p>{{ snippet.body|markdown }}</p>
+            <p>Submitted by: {{ snippet.submitter }}</p>
+            <p>Date submitted: {{ snippet.submitted_date }}</p>
+            <p>Total votes: {{ snippet.nr_votes }}</p>
+            <p>Tags: {{ snippet.tags.all|join:", " }}</p>
+        </div>
     </div>
 </div>
 {% endblock %}

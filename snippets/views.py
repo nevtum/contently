@@ -13,10 +13,10 @@ class SnippetListView(ListView):
     
     def get_queryset(self):
         if not self.request.GET.get('search'):
-            snippets = Snippet.objects.all()
+            snippets = Snippet.with_votes.all()
         else:
             search = self.request.GET['search']
-            snippets = Snippet.objects.filter(
+            snippets = Snippet.with_votes.filter(
                 Q(body__icontains=search) | Q(tags__name__in=[search])| Q(title__icontains=search))
         
         return snippets.order_by('-submitted_date')

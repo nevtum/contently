@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, CreateView, DetailView
 from django.db.models import Q
 from .models import Snippet
 
@@ -19,7 +19,12 @@ class SnippetListView(ListView):
                 Q(body__icontains=search) | Q(tags__name__in=[search])| Q(title__icontains=search))
         
         return snippets.order_by('-submitted_date')
-        
+
+class SnippetCreateView(CreateView):
+    model = Snippet
+    fields = ['title', 'body', 'tags']
+    template_name = 'submit_snippet.html'
+
 class SnippetDetailView(DetailView):
     model = Snippet
     context_object_name = 'snippet'

@@ -18,10 +18,12 @@ from django.conf.urls import url
 from django.contrib import admin
 from snippets.views import (
     SnippetListView,
+    SnippetCreateView,
     SnippetDetailView)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', SnippetListView.as_view(), name='snippets'),
-    url(r'^(?P<slug>[-\w]+)/$', SnippetDetailView.as_view(), name='snippet-detail')
+    url(r'^submitsnippet/$', SnippetCreateView.as_view(), name='new-snippet'),
+    url(r'^(?P<slug>[-\w]+)/$', SnippetDetailView.as_view(), name='snippet-detail'),
 ]

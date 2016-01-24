@@ -11,7 +11,7 @@ class SnippetVoteCountManager(models.Manager):
 class Snippet(models.Model):
     title = models.CharField(max_length=100)
     submitter = models.ForeignKey(User)
-    submitted_date = models.DateTimeField()
+    submitted_date = models.DateTimeField(auto_now_add=True)
     body = models.TextField()
     
     with_votes = SnippetVoteCountManager()

@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="snippets-page">
+    <div class="my-links">
+        <p>
+            <b>
+                <a href="{% url 'new-snippet' %}">Submit a new snippet</a> | 
+                <a href="">Another test link</a>
+            </b>
+        </p>
+    </div>
     <div class="search-control">
         <form action="" method="get" class="input-group">
             <input type="text" name="search" class="form-control" placeholder="Find snippets...">

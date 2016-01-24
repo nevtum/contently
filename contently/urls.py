@@ -14,16 +14,11 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
-from snippets.views import (
-    SnippetListView,
-    SnippetCreateView,
-    SnippetDetailView)
+from snippets import urls as snippet_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', SnippetListView.as_view(), name='snippets'),
-    url(r'^submitsnippet/$', SnippetCreateView.as_view(), name='new-snippet'),
-    url(r'^(?P<slug>[-\w]+)/$', SnippetDetailView.as_view(), name='snippet-detail'),
+    url(r'^', include(snippet_urls)),
 ]

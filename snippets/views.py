@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView
 from django.db.models import Q
-from django.core.urlresolvers import reverse
 from .models import Snippet
 
 # Create your views here.
@@ -29,9 +28,6 @@ class SnippetCreateView(CreateView):
     def form_valid(self, form):
         form.instance.submitter = self.request.user
         return super(SnippetCreateView, self).form_valid(form)
-    
-    def get_success_url(self):
-        return reverse('snippet-detail', kwargs={'slug': self.object.id})
 
 class SnippetDetailView(DetailView):
     model = Snippet

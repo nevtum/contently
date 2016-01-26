@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView
 from django.db.models import Q
 from .models import Snippet
 
@@ -28,6 +28,12 @@ class SnippetCreateView(CreateView):
     def form_valid(self, form):
         form.instance.submitter = self.request.user
         return super(SnippetCreateView, self).form_valid(form)
+
+class SnippetUpdateView(UpdateView):
+    model = Snippet
+    slug_field = 'id'
+    fields = ['title', 'body', 'tags']
+    template_name = 'update_snippet.html'
 
 class SnippetDetailView(DetailView):
     model = Snippet

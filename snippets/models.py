@@ -33,6 +33,5 @@ class Vote(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    created_at = models.DateTimeField()
     last_active = models.DateTimeField(null=True)
     bio = models.TextField(null=True)

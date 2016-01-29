@@ -30,3 +30,9 @@ class Vote(models.Model):
     voted_by = models.ForeignKey(User)
     snippet = models.ForeignKey(Snippet)
     vote_type = ('UPVOTE', 'DOWNVOTE')
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    created_at = models.DateTimeField()
+    last_active = models.DateTimeField(null=True)
+    bio = models.TextField(null=True)

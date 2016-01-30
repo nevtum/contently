@@ -37,11 +37,8 @@ class SnippetUpdateView(UpdateView):
     
     def get_object(self, queryset=None):
         snippet = super(SnippetUpdateView, self).get_object(queryset)
-        user = self.request.user.username
-        snippet_user = snippet.submitter.username
         if snippet.submitter != self.request.user:
             raise Exception("Cannot edit someone else's snippet!")
-            
         return snippet
 
 class SnippetDetailView(DetailView):

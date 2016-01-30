@@ -105,6 +105,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+from django.core.urlresolvers import reverse_lazy
+
+LOGIN_REDIRECT_URL = reverse_lazy('snippets')
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

@@ -16,9 +16,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import urls as auth_urls
 from snippets import urls as snippet_urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(snippet_urls)),
+    url(r'^account/', include(auth_urls)),
+
 ]

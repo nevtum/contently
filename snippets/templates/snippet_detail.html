@@ -5,7 +5,7 @@
     <div class="links">
         <p>
             <b>
-                {% if self.user.is_authenticated %}
+                {% if user.is_authenticated %}
                 <a href="{% url 'new-snippet' %}">Submit a new snippet</a> |
                 <a href="{% url 'update-snippet' snippet.id %}">Edit this snippet</a> |
                 {% endif %}

@@ -14,7 +14,7 @@
             <div class="links">
                 <p>
                     <b>
-                        {% if self.user.is_authenticated %}
+                        {% if user.is_authenticated %}
                         <a href="{% url 'new-snippet' %}">Submit a new snippet</a> |
                         {% endif %}
                         <a href="">Another test link</a>
@@ -46,6 +46,15 @@
                 {% if page_obj.has_next %}
                     <a href="?page={{ page_obj.next_page_number }}">next</a>
                 {% endif %}
+            </div>
+            <div class="account">
+                <p>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Log out</a>
+                    {% else %}
+                    <a href="{% url 'login' %}">Log in</a>
+                    {% endif %}
+                </p>
             </div>
         </div>
     </div>
